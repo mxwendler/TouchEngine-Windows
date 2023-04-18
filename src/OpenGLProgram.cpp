@@ -13,6 +13,7 @@
 */
 
 #include "stdafx.h"
+#include <exception>
 #include "OpenGLProgram.h"
 
 

@@ -16,8 +16,8 @@
 #include <commdlg.h>
 #include "DocumentWindow.h"
 #include "Resource.h"
-#include "DX11Renderer.h"
-#include "DX12Renderer.h"
+//#include "DX11Renderer.h"
+//#include "DX12Renderer.h"
 #include "OpenGLRenderer.h"
 #include "Strings.h"
 #include <codecvt>
@@ -531,12 +531,12 @@ DocumentWindow::DocumentWindow(std::wstring path, Mode mode)
 {
 	switch (mode)
 	{
-	case Mode::DirectX11:
-		myRenderer = static_cast<std::unique_ptr<Renderer>>(std::make_unique<DX11Renderer>());
-		break;
-	case Mode::DirectX12:
-		myRenderer = static_cast<std::unique_ptr<Renderer>>(std::make_unique<DX12Renderer>());
-		break;
+	//case Mode::DirectX11:
+	//	myRenderer = static_cast<std::unique_ptr<Renderer>>(std::make_unique<DX11Renderer>());
+	//	break;
+	//case Mode::DirectX12:
+	//	myRenderer = static_cast<std::unique_ptr<Renderer>>(std::make_unique<DX12Renderer>());
+	//	break;
 	default:
 		myRenderer = static_cast<std::unique_ptr<Renderer>>(std::make_unique<OpenGLRenderer>());
 		break;
@@ -855,6 +855,8 @@ DocumentWindow::update()
 		}
 		else
 		{
+			TEErrorArray* errors = nullptr;
+			myLastResult = TEInstanceGetErrors(myInstance, &errors);
 			setInFrame(false);
 		}
 	}
